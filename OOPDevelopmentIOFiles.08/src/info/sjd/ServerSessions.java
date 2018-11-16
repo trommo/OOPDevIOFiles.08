@@ -10,19 +10,23 @@ public class ServerSessions {
 	
 	public static void main(String[] args) {
 		
-			List<SessionData> sessions = new ArrayList<>();
-			
-			for (int i = 0; i < 10; i++) {
+		int limit = 10;
+
+		List<SessionData> sessions = new ArrayList<SessionData>();
+			for (int i = 0; i < limit; i++) {
 				SessionData session = new SessionData();
-				session.setSessionStartTime(String.valueOf(ServerSessionsService.sessionStartTime()));
+				session.setSessionStartTime(String.valueOf(ServerSessionsService.sessionStartTime() - (limit - i) * 1000));
 				session.setSessionID(String.valueOf(ServerSessionsService.sessionID()));
 				session.setSessionIP(ServerSessionsService.sessionIP());
+				
+				sessions.add(session);
 			}
 
 			
 		
-		
-		System.out.println(((SessionData) sessions).getSessionStartTime() + " " +  ((SessionData) sessions).getSessionID() + " " + ((SessionData) sessions).getSessionIP());
+		for (int i = 0; i < limit; i++) {
+			System.out.println(sessions.get(i).getSessionStartTime() + " " + sessions.get(i).getSessionID() + " " + sessions.get(i).getSessionIP());
+		}
 		
 	}
 	
