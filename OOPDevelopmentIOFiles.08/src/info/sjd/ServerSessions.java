@@ -4,10 +4,12 @@ import info.sjd.service.*;
 import info.sjd.SessionData;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class ServerSessions {
 	
@@ -35,27 +37,24 @@ public class ServerSessions {
 			writer.flush();
 			writer.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-//		if (file.exists()) {
-//			System.out.print("Cool!");
-//		} else {
-//			try {
-//				boolean created = file.createNewFile();
-//				if (created)
-//					System.out.println("File has been created!");
-//			} catch (IOException e) {
-//				
-//				e.printStackTrace();
-//			}
-//			System.out.println("File not exist");
-//		}
+
+		Scanner scanner;
+		try {
+			scanner = new Scanner(file);
+			String input = scanner.nextLine();
+			
+			while(scanner.hasNextLine()) {
+				System.out.println(scanner.nextLine());
+			}
+			
+			scanner.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 		
-//		for (int i = 0; i < limit; i++) {
-//			System.out.println(sessions.get(i).getSessionStartTime() + " " + sessions.get(i).getSessionID() + " " + sessions.get(i).getSessionIP());
-//		}
 		
 	}
 	
