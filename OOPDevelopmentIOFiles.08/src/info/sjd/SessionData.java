@@ -3,14 +3,14 @@ package info.sjd;
 
 
 public class SessionData {
-	private String sessionStartTime;
+	private long sessionStartTime;
 	private String sessionID;
 	private String sessionIP;
 	
-	public String getSessionStartTime() {
+	public long getSessionStartTime() {
 		return sessionStartTime;
 	}
-	public void setSessionStartTime(String sessionStartTime) {
+	public void setSessionStartTime(long sessionStartTime) {
 		this.sessionStartTime = sessionStartTime;
 	}
 	public String getSessionID() {
