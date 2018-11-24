@@ -12,7 +12,7 @@ public class WriteToFile {
 	private FileWriter file;
 	List<SessionData> sessions = new ArrayList<SessionData>();
 
-	public void openFile(File filePath) {
+	public void openSessionListToWrite(File filePath) {
 		try {
 			file = new FileWriter(filePath, true);
 
@@ -23,7 +23,7 @@ public class WriteToFile {
 	}
 	
 
-	public void closeFile() throws IOException {
+	public void closeSessionList() throws IOException {
 		file.flush();
 		file.close();
 	}

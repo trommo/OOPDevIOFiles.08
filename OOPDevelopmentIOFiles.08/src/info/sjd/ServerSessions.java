@@ -11,22 +11,31 @@ public class ServerSessions {
 	public static void main(String[] args) throws IOException {
 		
 		int limit = 10;
-		WriteToFile writeToFile = new WriteToFile();
+		int ageInDays = 3;
 		String filePath = "src/info/sjd/log/SessionLog.txt";
-		ReadFromFile readFromFile = new ReadFromFile();
-
 		File file = new File(filePath);	
+
+		WriteToFile writeToFile = new WriteToFile();
+		ReadFromFile readFromFile = new ReadFromFile();
+		RewriteFile rewriteFile = new RewriteFile();
 		
 		
-		writeToFile.openFile(file);
+		writeToFile.openSessionListToWrite(file);
 		writeToFile.createNSessions(limit);
 		writeToFile.writeNSessions(limit);
-		writeToFile.closeFile();
+		writeToFile.closeSessionList();
 		
-		readFromFile.openFileToRead(file);
-		readFromFile.readFile();
+		readFromFile.openSessionListToRead(file);
+		readFromFile.readSessionList();
 		readFromFile.showScannedSessions();
-		readFromFile.closeFileToRead();
+		readFromFile.closeSessionList();
+		
+		rewriteFile.openSessionListToRewrite(file);
+		rewriteFile.createNewListOfSessions(ageInDays);
+		rewriteFile.closeReadingOfSessionList();
+		rewriteFile.openSessionListToRewriteAgain(file);
+		rewriteFile.rewriteNSessions();
+		rewriteFile.closeSessionList();
 		
 		
 	}

@@ -12,7 +12,8 @@ public class ReadFromFile {
 	List<SessionData> scannedSessions = new ArrayList<SessionData>();
 	private Scanner scanner;
 	int sessionsCounter;
-	public void openFileToRead (File filePath) {
+	
+	public void openSessionListToRead (File filePath) {
 		try {
 			scanner = new Scanner(filePath);
 		} catch (Exception e) {
@@ -21,7 +22,7 @@ public class ReadFromFile {
 		
 	}
 	
-	public void readFile( ) {
+	public void readSessionList( ) {
 		while (scanner.hasNext()) {
 			SessionData session = new SessionData();
 			session.setSessionStartTime(Long.parseLong(scanner.next()));
@@ -40,7 +41,7 @@ public class ReadFromFile {
 		}
 	}
 	
-	public void closeFileToRead() {
+	public void closeSessionList() {
 		scanner.close();
 	}
 		
