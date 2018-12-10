@@ -1,7 +1,5 @@
 package info.sjd;
 
-
-
 public class SessionData {
 	private long sessionStartTime;
 	private String sessionID;
@@ -25,8 +23,4 @@ public class SessionData {
 	public void setSessionIP(String sessionIP) {
 		this.sessionIP = sessionIP;
 	}
-	
-	
-
-
 }

@@ -11,6 +11,7 @@ import java.util.Scanner;
 import info.sjd.SessionData;
 
 public class RewriteFile {
+
 	List<SessionData> scannedSessions = new ArrayList<SessionData>();
 	private Scanner scanner;
 	private FileWriter file;
@@ -27,11 +28,20 @@ public class RewriteFile {
 	public void createNewListOfSessions(int ageInDays) {
 		while (scanner.hasNext()) {
 			Date date = new Date(System.currentTimeMillis());
-			if (Long.parseLong(scanner.next()) > (date.getTime() - ageInDays * 24 * 60 * 60 * 1000)) {
+			String[] current = scanner.nextLine().split("\\s+");
+			for (String subCurrent : current) {
+				if ("".equals(subCurrent)) {
+					continue;
+				}
+					
+				
+			}
+			Long sessionStartTime = Long.parseLong(current[0].trim());
+			if (sessionStartTime > (date.getTime() - ageInDays * 24 * 60 * 60 * 1000)) {
 				SessionData session = new SessionData();
-				session.setSessionStartTime(Long.parseLong(scanner.next()));
-				session.setSessionID(scanner.next());
-				session.setSessionIP(scanner.next());
+				session.setSessionStartTime(sessionStartTime);
+				session.setSessionID(current[1]);
+				session.setSessionIP(current[2]);
 				sessionsCounter++;
 				scannedSessions.add(session);
 			}
@@ -52,7 +62,7 @@ public class RewriteFile {
 
 	public void rewriteNSessions() throws IOException {
 		for (int i = 0; i < sessionsCounter; i++) {
-			file.write(scannedSessions.get(i).getSessionStartTime() + " " + scannedSessions.get(i).getSessionID() + " " + scannedSessions.get(i).getSessionIP());
+			file.write(scannedSessions.get(i).getSessionStartTime() + " " + scannedSessions.get(i).getSessionID() + " " + scannedSessions.get(i).getSessionIP() + "\n");
 		}		
 	}
 

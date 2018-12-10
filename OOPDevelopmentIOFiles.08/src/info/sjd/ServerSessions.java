@@ -5,7 +5,6 @@ import info.sjd.service.*;
 import java.io.File;
 import java.io.IOException;
 
-
 public class ServerSessions {
 	
 	public static void main(String[] args) throws IOException {
@@ -18,7 +17,6 @@ public class ServerSessions {
 		WriteToFile writeToFile = new WriteToFile();
 		ReadFromFile readFromFile = new ReadFromFile();
 		RewriteFile rewriteFile = new RewriteFile();
-		
 		
 		writeToFile.openSessionListToWrite(file);
 		writeToFile.createNSessions(limit);
@@ -36,9 +34,7 @@ public class ServerSessions {
 		rewriteFile.openSessionListToRewriteAgain(file);
 		rewriteFile.rewriteNSessions();
 		rewriteFile.closeSessionList();
-		
-		
-	}
 
+	}
 }
 

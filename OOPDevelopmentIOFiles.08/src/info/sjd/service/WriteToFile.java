@@ -15,14 +15,11 @@ public class WriteToFile {
 	public void openSessionListToWrite(File filePath) {
 		try {
 			file = new FileWriter(filePath, true);
-
-
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 	
-
 	public void closeSessionList() throws IOException {
 		file.flush();
 		file.close();
@@ -37,7 +34,6 @@ public class WriteToFile {
 			
 			sessions.add(session);
 		}
-		
 	}
 
 	public void writeNSessions(int limit) throws IOException {

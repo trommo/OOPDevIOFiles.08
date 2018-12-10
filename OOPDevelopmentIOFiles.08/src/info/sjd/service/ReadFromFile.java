@@ -19,7 +19,6 @@ public class ReadFromFile {
 		} catch (Exception e) {
 			System.out.println("File not found!");
 		}
-		
 	}
 	
 	public void readSessionList( ) {
@@ -35,16 +34,11 @@ public class ReadFromFile {
 
 	public void showScannedSessions() {
 		for (int i = 0; i < sessionsCounter; i++) {
-			
-		System.out.println(scannedSessions.get(i).getSessionStartTime() + " " + scannedSessions.get(i).getSessionID() + " " + scannedSessions.get(i).getSessionIP());
-	
+			System.out.println(scannedSessions.get(i).getSessionStartTime() + " " + scannedSessions.get(i).getSessionID() + " " + scannedSessions.get(i).getSessionIP());
 		}
 	}
 	
 	public void closeSessionList() {
 		scanner.close();
 	}
-		
-	
-
 }
